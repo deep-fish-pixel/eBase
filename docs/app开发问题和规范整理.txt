@@ -1,0 +1,35 @@
+app开发问题和规范整理:
+10.8
+1.page中没有参数值的，请求中应该删除：this.service.getPageData({id: this.routeData[0]});
+2.page模块之间的调用：
+	注册模块：eBase.module.put('view.index', view);
+	获取模块： var index = eBase.module.get('view.index');
+3.模块预取规则(eBase.PageRouter.prefetch)
+	1.子页面不需要预取父页面
+	2.页面的下个入口较多时，建议不进行预取
+	3.不需预取的页面需删除
+4.页面中包含fixed，安卓页面切换中出现抖动bug，使用隐藏：.page-del-prev-ani .fix-button{position: hidden;}
+
+10.21
+1.页面跳转：href使用#xxx（表示子页面的路径）使用##xxx(表示根路径)
+2.页面跳转：eBase.PageRouter.go(value) value值为 -number +number 表示后退、前进几步，value值为xxx或#xxx表示与14条href的#xxx和##xxx相同
+3.页面数据刷新的使用方式：
+	var viewIndex = eBase.module.get('view.index')
+	viewIndex.refresh(fetchData)    fetchData为false或空表示不重新取模板数据，只刷新页面 栗子：我的理财manage-more.js 115行
+					fetchData为true表示重新取模板数据，并刷新页面 栗子：manage-more.js 第115行 栗子：我的理财survey-result.js 42行
+4.render方法中status.operate的值可为 add、remove所以 可用if(status.operate=='add'){...}else{...}
+5.对后台的接口规范：
+	1.接口的json格式要简明扼要，有序的是数组，无序的是对象 
+	2.json的key命名符合见名知意
+	3.json的key值尽量简短
+6.Exp.stopClick与 Exp.click的区别，前者有间隔1s，用于提交表单的按钮，逻辑计算/控制的a标签等, 防止重复提交/计算
+7.顺畅的1-2个流程要使用prefetch，3个以上的不推荐使用
+
+10.26
+1.使用grunt的html压缩
+2.废弃13条中#-1 #+1操作，eBase.PageRouter.go可继续使用。因该方式造成路径污染，无法消除
+3.去除多余不必要的请求场景：
+	1.提交数据后的返回结果是下一个页面模板数据
+4.首页hash可配置为空字符
+5.header中增加页面预取功能:<link rel='subresource' href='scripts/app/app.js'>，链接地址需要在后台中响应变更
+	

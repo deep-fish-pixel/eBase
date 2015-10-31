@@ -1,0 +1,53 @@
+@import url(reset.css);
+@import url(module.css);
+@import url(app.css);
+.content {
+  height: 100vh;
+  text-align: center; }
+  .content .title {
+    color: white;
+    font-size: 30px; }
+  .content .title2 {
+    color: white;
+    font-size: 24px; }
+
+.btn-group {
+  margin: 50px; }
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  text-decoration: none; }
+
+.btn-primary {
+  color: #fff;
+  background-color: #8F8F8F;
+  border-color: #7F7F7F; }
+
+.btn-lg {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px; }
+
+/*# sourceMappingURL=test.css.map */

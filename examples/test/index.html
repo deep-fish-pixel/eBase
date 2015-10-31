@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='x-dns-prefetch-control' content='on'>
+    <link rel='dns-prefetch' href='http://resjrprd.suning.com'>
+    <link rel='subresource' href='scripts/app/app.js'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv= "Cache-Control" content= "public" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+</head>
+<body>
+<style type="text/css">
+    body{padding:0;margin:0 auto;min-width: 375px;max-width: 750px;}
+    body >.page-loading-box{position: fixed;}
+    .page-loading-box{width: 100%;height:100%;top: 0;z-index: 100002;position: fixed;left: 0;}
+    .page-loading-box *{box-sizing: content-box;}
+    .page-loading{width: 80px;height: 80px;left: 50%;top: 50%;background: rgba(0,0,0,0.6);position: absolute;border-radius: 10px;margin: -40px -40px;}
+    .page-loading-box img{top:32px; left:32px;position:absolute;}
+    .page-loading-box svg{top:20px; left:20px;position:absolute;}
+</style>
+<div class='page-loading-box'>
+    <div class='page-loading' style="overflow: hidden;">
+        <svg class="svg-circle-outer" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 36 36" width="40" height="40" >
+            <path fill="#fff" d="M22.941,17.764h-1.133H13.73l0.336-0.734h6.703c2.875,0,3.609-1.805,3.609-3.029v-1.897
+	c0-1.041-0.643-1.408-1.529-1.408h-1.133h-8.262h-0.765h-2.05v6.334h0.857l-2.081,4.498h2.632l0.979-2.111h0.857l-2.02,4.591h2.509
+	l1.989-4.56h1.163l-1.989,4.56h2.478l1.991-4.56h1.836v1.988c0,0.674-0.611,1.102-1.377,1.102h-0.888l-0.643,1.5h2.113
+	c2.691,0,3.609-1.621,3.609-2.846v-1.775C24.625,18.285,23.828,17.764,22.941,17.764z M21.596,12.165v2.295
+	c0,0.673-0.521,1.163-1.316,1.163h-6.794v-0.948h7.039v-1.53h-7.039v-0.979H21.596z"/>
+            <path opacity=".25" d="M17 0 A17 17 0 0 0 17 34 A17 17 0 0 0 17 0" stroke="#fff" fill="rgba(0,0,0,0)" stroke-width="1px" />
+            <path class="svg-circle" d="M17 0 A17 17 0 0 0 17 34 A17 17 0 0 0 34 17" stroke-dasharray="78"
+                  stroke="#fff" fill="rgba(0,0,0,0)" stroke-width="1px">
+                <animateTransform attributeName="transform" type="rotate" values="0 17 17;50 17 17; 360 17 17" dur="1.5s" repeatCount="indefinite" calcMode="spline" keySplines=".5 0 .5 1;.5 0 .5 1" />
+                <animateTransform attributeName="transform" type="rotate" values="0 17 17;360 17 17" dur="2.15s" repeatCount="indefinite" additive="sum"/>
+                <animate attributeName="stroke-dashoffset" dur="1.5s" values="0; 76; 0" repeatCount="indefinite" calcMode="spline" keySplines=".5 0 .5 1;.5 0 .5 1" />
+            </path>
+        </svg>
+    </div>
+</div>
+<svg class="svg-circle-request" style="display:none;" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 36 36" width="25" height="25" ><path class="svg-circle" d="M17 0 A17 17 0 0 0 17 34 A17 17 0 0 0 34 17" stroke-dasharray="78" stroke="#fff" fill="rgba(0,0,0,0)" stroke-width="1px"></path></svg>
+
+<script >
+    var appConfig = {
+        //模板数据地址
+        templatePath :'',
+        //首页数据json URL
+        pageFirstDataUrl:'data/page/page-first.json',
+        //第二页数据json URL
+        pageSecondDataUrl:'data/page/page-second.json'
+    };
+</script>
+<script type="text/javascript">
+    (function (){
+        function simpleLoadRes(attrs, cb){
+            var head = document.head || document.getElementsByTagName('head')[0],
+                    type = attrs.src.indexOf('.js')>0?'script':'css',
+                    element = document.createElement(type=='script'?'script':'link');
+            if(element){
+                attrs.type = type=='script'?'text/javascript':'text/css';
+                if(type !=='script'){
+                    attrs.rel = 'stylesheet';
+                    attrs.href = attrs.src;
+                    delete attrs.src;
+                }
+                for(var name in attrs){
+                    element.setAttribute(name, attrs[name]);
+                }
+                if(cb){
+                    element.onload = function(){
+                        cb();
+                    };
+                }
+                head.appendChild(element);
+            }
+        }
+        setTimeout(function () {
+            simpleLoadRes({
+                'src':'http://resjrprd.suning.com/finance/public/v1/scripts/lib/zepto/zepto.temple.compo.js',
+                'data-contextpath':'',
+                'data-dependonload':'true'
+            }, function () {
+                compose.require(['scripts/app/app.js'], function(){
+                });
+            });
+            simpleLoadRes({
+                'src':'style/css/test.css'
+            });
+        }, 0);
+    })();
+</script>
+</body>
+
+</html>

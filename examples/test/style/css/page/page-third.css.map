@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,WAAW;EACP,UAAU,EAAE,OAAO",
+"sources": ["page-third.scss"],
+"names": [],
+"file": "page-third.css"
+}

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,YAAY;EACR,UAAU,EAAE,OAAO",
+"sources": ["page-second.scss"],
+"names": [],
+"file": "page-second.css"
+}

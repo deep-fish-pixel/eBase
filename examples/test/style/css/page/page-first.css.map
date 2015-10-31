@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,SAAS;EACL,UAAU,EAAE,OAAO",
+"sources": ["page-first.scss"],
+"names": [],
+"file": "page-first.css"
+}
